@@ -7,4 +7,4 @@
 
 Вид приложения
 
-![2222](https://github.com/user-attachments/assets/a6116868-19ba-4254-af00-d9eec4b220c5)
+![2222](https://github.com/user-attachments/assets/a991c384-3098-4357-8876-c2747cfb9d01)
