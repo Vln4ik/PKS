@@ -4,9 +4,9 @@
 Работы выполнил студент **ЭФБО-03-22 Харабрин К.А.** <br>
 
 # Структура репозитория
-| Номер<br>Практики | Ссылка на ветку |
+| Номер<br>Практики | Кресты | Ссылка на ветку |
 |:---:|:---:|---||
-| 1 | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-1) |
+| 2 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-2) |
 | 2 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-2) |
 | 3 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-3) |
 | 4 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-4) |
