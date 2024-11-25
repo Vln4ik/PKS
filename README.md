@@ -5,7 +5,7 @@
 
 # Структура репозитория
 | Номер<br>Практики | Ссылка на ветку |
-|:---:|:---:|---|
+|:---:|:---:|---||
 | 1 | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-1) |
 | 2 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-2) |
 | 3 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-3) |
