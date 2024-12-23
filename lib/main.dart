@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled/data/cartItemsData.dart';
-import 'package:untitled/models/productItem.dart';
-import 'package:untitled/pages/CartPage.dart';
-import 'package:untitled/pages/HomePage.dart';
-import 'package:untitled/pages/ProfilePage.dart';
+import 'pages/catalog_screen.dart';
+import 'pages/cart_screen.dart';
+import 'pages/profile_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Клиника',
-      theme: ThemeData(
-        textTheme: GoogleFonts.montserratTextTheme(),
-      ),
-      home: const Home(),
+      home: MainScreen(),
     );
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
-
+class MainScreen extends StatefulWidget {
   @override
-  State<Home> createState() => _HomeState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-
-  final Cart cart = Cart();
+  final List<Widget> _screens = [
+    CatalogScreen(),
+    CartScreen(),
+    ProfileScreen(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -46,60 +38,31 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      HomePage(cart: cart),
-      CartPage(cart: cart),
-      const ProfilePage(),
-    ];
-
     return Scaffold(
-      body: pages[_selectedIndex],
-      bottomNavigationBar: Container(
-        height: 88,
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              label: 'Главная',
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/img/Home.png',
-                    color: _selectedIndex == 0 ? Color(0xFF1A6FEE) : Color(0xFF898A8D),
-                  ),
-                ],
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Корзина',
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/img/Cart.png',
-                    color: _selectedIndex == 1 ? Color(0xFF1A6FEE) : Color(0xFF898A8D),
-                  ),
-                ],
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Профиль',
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/img/profile.png',
-                    color: _selectedIndex == 2 ? Color(0xFF1A6FEE) : Color(0xFF898A8D),
-                  ),
-                ],
-              ),
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Color(0xFF1A6FEE),
-          unselectedItemColor: Color(0xFF898A8D),
-          onTap: _onItemTapped,
-        ),
+      body: _screens[_selectedIndex],
+      bottomNavigationBar:
+      BottomNavigationBar(
+        backgroundColor: Colors.white,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/icons/home.png', width: 24, height: 24),
+            activeIcon: Image.asset('assets/icons/home-active.png', width: 24, height: 24),
+            label: 'Главная',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/icons/cart.png', width: 24, height: 24),
+            activeIcon: Image.asset('assets/icons/cart-active.png', width: 24, height: 24),
+            label: 'Корзина',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/icons/profile.png', width: 24, height: 24),
+            activeIcon: Image.asset('assets/icons/profile-active.png', width: 24, height: 24),
+            label: 'Профиль',
+          ),
+        ],
+        selectedItemColor: Colors.blue,
       ),
     );
   }
