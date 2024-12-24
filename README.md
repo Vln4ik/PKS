@@ -13,9 +13,9 @@
 | 5 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-5) |
 | 6 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-6) |
 | 7 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-7) |
-| 8 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-8) |
-| 9 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-9) |
-| 10 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-10) |
+| 8 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-8) |
+| 9 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-9) |
+| 10 | X | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-10) |
 | 11 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-11) |
 | 12 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-12) |
 | 13 | - | [Ссылка на ветку](https://github.com/Vln4ik/PKS/tree/Practice-13) |
