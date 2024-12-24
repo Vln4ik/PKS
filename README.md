@@ -6,3 +6,8 @@
 # Содержание работы|
 
 Вид приложения
+![1](https://github.com/user-attachments/assets/20db5187-819a-42fe-b918-b68cbe7b411a)
+
+
+https://github.com/user-attachments/assets/8b164f8b-3c00-454c-87f8-385f5652b1eb
+
