@@ -3,7 +3,11 @@ import 'package:front/pages/favorites_page.dart';
 import 'package:front/pages/home_page.dart';
 import 'package:front/pages/profile_page.dart';
 import 'package:front/pages/cart_page.dart';
+<<<<<<< Updated upstream
 import 'package:front/styles/nav_styles.dart';
+=======
+import 'package:front/auth/auth_gate.dart';
+>>>>>>> Stashed changes
 
 class MyNavigationPage extends StatefulWidget {
   const MyNavigationPage({super.key});
@@ -19,7 +23,8 @@ class _MyNavigationPageState extends State<MyNavigationPage> {
     MyHomePage(),
     MyFavouritesPage(),
     MyCartPage(),
-    MyUserPage(),
+    //MyUserPage(),
+    AuthGate(),
   ];
 
   void _onItemTapped(int index) {
@@ -31,7 +36,11 @@ class _MyNavigationPageState extends State<MyNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< Updated upstream
       backgroundColor: AppTheme.backgroundColor,
+=======
+      backgroundColor: const Color.fromRGBO(255, 248, 225, 1),
+>>>>>>> Stashed changes
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -43,8 +52,13 @@ class _MyNavigationPageState extends State<MyNavigationPage> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль"),
         ],
         currentIndex: _selectedIndex,
+<<<<<<< Updated upstream
         selectedItemColor: AppTheme.bottomNavSelectedColor,
         unselectedItemColor: AppTheme.bottomNavUnselectedColor,
+=======
+        selectedItemColor: const Color.fromARGB(255, 72, 67, 51),
+        unselectedItemColor: const Color.fromRGBO(99, 247, 168, 1),
+>>>>>>> Stashed changes
         onTap: _onItemTapped,
       ),
     );

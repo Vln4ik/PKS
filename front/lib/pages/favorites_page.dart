@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:front/components/list_item.dart';
 import 'package:front/pages/itam_page.dart';
 import 'package:front/models/api_service.dart';
+<<<<<<< Updated upstream
 import 'package:front/models/product_model.dart';
 import 'package:front/models/favourites_model.dart';
 import 'package:front/models/cart_model.dart';
 import 'package:front/styles/favourites_styles.dart';
+=======
+import 'package:front/models/favourites_model.dart';
+import 'package:front/models/cart_model.dart';
+>>>>>>> Stashed changes
 
 class MyFavouritesPage extends StatefulWidget {
   const MyFavouritesPage({super.key});
@@ -31,7 +36,11 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
       _favProducts = ApiService().getFavorites(1);
       ApiService().getFavorites(1).then(
             (el) => {_favProductsUpd = el},
+<<<<<<< Updated upstream
       );
+=======
+          );
+>>>>>>> Stashed changes
     });
   }
 
@@ -46,17 +55,46 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
 
   void _addToFavorites(int i) async {
     await ApiService().addToFavorites(1, i);
+<<<<<<< Updated upstream
+=======
+    //_fetchFavorites();
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isFavourite = !i.isFavourite;*/
+    });
+>>>>>>> Stashed changes
     _setUpd();
   }
 
   void _deleteFromFavourites(int i) async {
     await ApiService().removeFromFavorites(1, i);
+<<<<<<< Updated upstream
+=======
+    //_fetchFavorites();
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isFavourite = !i.isFavourite;*/
+    });
+>>>>>>> Stashed changes
     _setUpd();
   }
 
   void _deleteFromCart(int i) async {
     await ApiService().removeFromCart(1, i);
     _fetchCart();
+<<<<<<< Updated upstream
+=======
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isFavourite = !i.isFavourite;*/
+    });
+>>>>>>> Stashed changes
     _setUpd();
   }
 
@@ -64,6 +102,18 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
     int quantity = 1;
     await ApiService().addToCart(1, i, quantity);
     _fetchCart();
+<<<<<<< Updated upstream
+=======
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isInCart = true;
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .quantity = 1;*/
+    });
+>>>>>>> Stashed changes
     _setUpd();
   }
 
@@ -74,6 +124,11 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
       MaterialPageRoute(
         builder: (context) => ItamPage(
           flavor: product,
+<<<<<<< Updated upstream
+=======
+          //onAddToFavourites: (flavor) => {_deleteFromFavorites(flavor)},
+          //onAddToCart: (flavor) => {_addToCart(flavor)},
+>>>>>>> Stashed changes
         ),
       ),
     );
@@ -83,17 +138,30 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< Updated upstream
         backgroundColor: AppTheme.backgroundColor,
         appBar: AppBar(
           title: const Text(
             "Избранные модели",
             style: TextStyle(
               color: Colors.white,
+=======
+        backgroundColor: Colors.grey,
+        appBar: AppBar(
+          title: const Text(
+            "Избранные товары",
+            style: TextStyle(
+              color: Colors.black,
+>>>>>>> Stashed changes
               fontSize: 20.0,
               fontWeight: FontWeight.w700,
             ),
           ),
+<<<<<<< Updated upstream
           backgroundColor: AppTheme.appBarColor,
+=======
+          backgroundColor: const Color.fromRGBO(99, 247, 168, 1),
+>>>>>>> Stashed changes
         ),
         body: FutureBuilder<List<Favourites>>(
             future: _favProducts,
@@ -105,11 +173,22 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
               } else if (!snapshot.hasData ||
                   snapshot.data!.isEmpty ||
                   snapshot.data == null) {
+<<<<<<< Updated upstream
                 return const Center(child: Text('Модели не добавлены'));
               }
 
               final items = snapshot.data!;
 
+=======
+                return const Center(child: Text('Товары не добавлены'));
+              }
+
+              final items = snapshot.data!;
+              /*
+              for (int i = 0; i < items.length; i++) {
+                print(items);
+              }*/
+>>>>>>> Stashed changes
               return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -119,6 +198,10 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
                 itemBuilder: (BuildContext context, int index) {
                   final flavor = items[index];
                   final flId = items[index].productid;
+<<<<<<< Updated upstream
+=======
+                  print('flavor ${flavor.id}   flId ${flId}   ${flavor.name}');
+>>>>>>> Stashed changes
 
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -126,12 +209,21 @@ class _MyFavouritesPageState extends State<MyFavouritesPage> {
                       key: Key(flavor.productid.toString()),
                       flavor: flavor,
                       onAddToFavourites: (int flavor) =>
+<<<<<<< Updated upstream
                       {_addToFavorites(flavor)},
                       onDeleteFromFavourites: (int flavor) =>
                       {_deleteFromFavourites(flavor)},
                       onAddToCart: (int flavor) => {addTOCart(flavor)},
                       onDeleteFromCart: (int flavor) =>
                       {_deleteFromCart(flavor)},
+=======
+                          {_addToFavorites(flavor)},
+                      onDeleteFromFavourites: (int flavor) =>
+                          {_deleteFromFavourites(flavor)},
+                      onAddToCart: (int flavor) => {addTOCart(flavor)},
+                      onDeleteFromCart: (int flavor) =>
+                          {_deleteFromCart(flavor)},
+>>>>>>> Stashed changes
                       NavToItemPage: (int i) => {_openItem(i)},
                     ),
                   );

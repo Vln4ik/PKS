@@ -35,7 +35,13 @@ func main() {
 	router.DELETE("/favourites/:userId/:productId", handlers.RemoveFromFavorites(db))
 
 	// роуты для пользователя
+<<<<<<< Updated upstream
 	router.GET("/users/:id", handlers.GetUser(db))
+=======
+	router.POST("/users", handlers.CreateUser(db))
+	router.GET("/users/:email", handlers.GetUser(db))
+	//router.GET("/users/email/:email", handlers.GetUserByEmail(db))
+>>>>>>> Stashed changes
 	router.PUT("/users/:id", handlers.UpdateUser(db))
 
 	// Запуск сервера

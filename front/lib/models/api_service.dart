@@ -1,5 +1,8 @@
 import 'dart:async';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import 'package:dio/dio.dart';
 import 'package:front/models/cart_model.dart';
 import 'package:front/models/favourites_model.dart';
@@ -8,11 +11,21 @@ import 'product_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
+<<<<<<< Updated upstream
   //http://192.168.2.159:8080
 //получение списка продуктов
   Future<List<Product>> getProducts() async {
     try {
       final response = await _dio.get('http://10.0.2.2:8080/products');
+=======
+  //final ip = '10.192.229.69';
+  //http://192.168.50.65:8080
+
+//получение списка продуктов
+  Future<List<Product>> getProducts() async {
+    try {
+      final response = await _dio.get('http://192.168.50.65:8080/products');
+>>>>>>> Stashed changes
       if (response.statusCode == 200) {
         List<Product> products = (response.data as List)
             .map((product) => Product.fromJson(product))
@@ -29,7 +42,11 @@ class ApiService {
 //получение данных продукта по id
   Future<Product> getProductById(int id) async {
     try {
+<<<<<<< Updated upstream
       final response = await _dio.get('http://10.0.2.2:8080/products/$id');
+=======
+      final response = await _dio.get('http://192.168.50.65:8080/products/$id');
+>>>>>>> Stashed changes
       if (response.statusCode == 200) {
         return Product.fromJson(response.data);
       } else {
@@ -44,7 +61,11 @@ class ApiService {
   Future<void> createProduct(Product product) async {
     try {
       final response =
+<<<<<<< Updated upstream
           await _dio.post('http://10.0.2.2:8080/products', data: {
+=======
+      await _dio.post('http://192.168.50.65:8080/products', data: {
+>>>>>>> Stashed changes
         'image_url': product.imageUrl,
         'name': product.name,
         'description': product.description,
@@ -66,7 +87,11 @@ class ApiService {
   Future<void> updateProduct(Product product) async {
     try {
       final response = await _dio.put(
+<<<<<<< Updated upstream
         'http://10.0.2.2:8080/products/${product.id}',
+=======
+        'http://192.168.50.65:8080/products/${product.id}',
+>>>>>>> Stashed changes
         data: {
           'image_url': product.imageUrl,
           'name': product.name,
@@ -89,7 +114,11 @@ class ApiService {
     print("deleteProduct function called");
     try {
       final response =
+<<<<<<< Updated upstream
           await _dio.delete('http://10.0.2.2:8080/products/$id');
+=======
+      await _dio.delete('http://192.168.50.65:8080/products/$id');
+>>>>>>> Stashed changes
       if (response.statusCode == 200) {
         return;
       } else {
@@ -105,7 +134,11 @@ class ApiService {
     print("changeProductStatus function called");
     try {
       final response = await _dio.put(
+<<<<<<< Updated upstream
           'http://10.0.2.2:8080/products/update/${product.id}',
+=======
+          'http://192.168.50.65:8080/products/update/${product.id}',
+>>>>>>> Stashed changes
           data: {
             'image_url': product.imageUrl,
             'name': product.name,
@@ -130,7 +163,11 @@ class ApiService {
   Future<List<Cart>> getCart(int userId) async {
     print("getCart function called");
     try {
+<<<<<<< Updated upstream
       final response = await _dio.get('http://10.0.2.2:8080/cart/$userId');
+=======
+      final response = await _dio.get('http://192.168.50.65:8080/cart/$userId');
+>>>>>>> Stashed changes
       print("Response status code: ${response.statusCode}");
       if (response.statusCode == 200) {
         if (response.data != null) {
@@ -156,7 +193,11 @@ class ApiService {
     print("addToCart function called id=$productId");
     try {
       final response =
+<<<<<<< Updated upstream
           await _dio.post('http://10.0.2.2:8080/cart/$userId', data: {
+=======
+      await _dio.post('http://192.168.50.65:8080/cart/$userId', data: {
+>>>>>>> Stashed changes
         'product_id': productId,
         'quantity': quantity,
       });
@@ -173,7 +214,11 @@ class ApiService {
     print("removeFromCart function called id=$productId");
     try {
       final response = await _dio
+<<<<<<< Updated upstream
           .delete('http://10.0.2.2:8080/cart/$userId/$productId');
+=======
+          .delete('http://192.168.50.65:8080/cart/$userId/$productId');
+>>>>>>> Stashed changes
       if (response.statusCode != 200) {
         throw Exception('Failed to remove from cart');
       }
@@ -188,7 +233,11 @@ class ApiService {
     print("getFavorites function called ");
     try {
       final response =
+<<<<<<< Updated upstream
           await _dio.get('http://10.0.2.2:8080/favourites/$userId');
+=======
+      await _dio.get('http://192.168.50.65:8080/favourites/$userId');
+>>>>>>> Stashed changes
       if (response.statusCode == 200) {
         if (response.data != null) {
           List<Favourites> products = (response.data as List)
@@ -212,7 +261,11 @@ class ApiService {
     print("addToFavorites function called id=$productId");
     try {
       final response = await _dio
+<<<<<<< Updated upstream
           .post('http://10.0.2.2:8080/favourites/$userId', data: {
+=======
+          .post('http://192.168.50.65:8080/favourites/$userId', data: {
+>>>>>>> Stashed changes
         'product_id': productId,
       });
       if (response.statusCode != 200) {
@@ -228,7 +281,11 @@ class ApiService {
     print("removeFromFavorites function called id=$productId");
     try {
       final response = await _dio
+<<<<<<< Updated upstream
           .delete('http://10.0.2.2:8080/favourites/$userId/$productId');
+=======
+          .delete('http://192.168.50.65:8080/favourites/$userId/$productId');
+>>>>>>> Stashed changes
       if (response.statusCode != 200) {
         throw Exception('Failed to remove from favorites');
       }
@@ -238,11 +295,60 @@ class ApiService {
   }
 
 // ПОЛЬЗОВАТЕЛЬ
+<<<<<<< Updated upstream
+=======
+// создание пользователя
+  Future<void> createUser(User user) async {
+    print("createUser function called");
+    String img =
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAd5avdba8EiOZH8lmV3XshrXx7dKRZvhx-A&s';
+    try {
+      final response =
+      await _dio.post('http://192.168.50.65:8080/users', data: {
+        'image_url': img,
+        'name': user.name,
+        'email': user.email,
+        'phone': user.phoneNumber,
+        'password': user.password,
+      });
+      if (response.statusCode == 201) {
+        return;
+      } else {
+        throw Exception('Failed to create user');
+      }
+    } catch (e) {
+      throw Exception('Error creating user: $e');
+    }
+  }
+
+>>>>>>> Stashed changes
 //найти пользователя по id
   Future<User> getUserById(int id) async {
     print("getUserById function called id=$id");
     try {
+<<<<<<< Updated upstream
       final response = await _dio.get('http://10.0.2.2:8080/users/$id');
+=======
+      final response = await _dio.get('http://192.168.50.65:8080/users/$id');
+      if (response.statusCode == 200) {
+        User data = User.fromJson(response.data);
+        print(data);
+        return data;
+      } else {
+        throw Exception('Failed to load user data');
+      }
+    } catch (e) {
+      throw Exception('Error fetching user data: $e');
+    }
+  }
+
+  //найти пользователя по email
+  Future<User> getUserByEmail(String? email) async {
+    print("getUserById function called email=$email");
+    try {
+      final response =
+      await _dio.get('http://192.168.50.65:8080/users/${email.toString()}');
+>>>>>>> Stashed changes
       if (response.statusCode == 200) {
         User data = User.fromJson(response.data);
         print(data);
@@ -260,7 +366,11 @@ class ApiService {
     print("updateUser function called id=${user.name}");
     try {
       final response =
+<<<<<<< Updated upstream
           await _dio.put('http://10.0.2.2:8080/users/${user.id}', data: {
+=======
+      await _dio.put('http://192.168.50.65:8080/users/${user.id}', data: {
+>>>>>>> Stashed changes
         'username': user.name,
         'image_url': user.image,
         'phone': user.phoneNumber,

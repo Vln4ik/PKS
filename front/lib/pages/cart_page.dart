@@ -4,7 +4,10 @@ import 'package:front/models/product_model.dart';
 import 'package:front/pages/itam_page.dart';
 import 'package:front/models/cart_model.dart';
 import 'package:front/models/favourites_model.dart';
+<<<<<<< Updated upstream
 import 'package:front/styles/cart_styles.dart';
+=======
+>>>>>>> Stashed changes
 
 class MyCartPage extends StatefulWidget {
   const MyCartPage({
@@ -57,16 +60,33 @@ class _MyCartPageState extends State<MyCartPage> {
         ),
       ),
     );
+<<<<<<< Updated upstream
+=======
+    //_setUpd();
+>>>>>>> Stashed changes
   }
 
   void _deleteFromCart(int i) async {
     await ApiService().removeFromCart(1, i);
+<<<<<<< Updated upstream
     setState(() {});
+=======
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isInCart = true;
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .quantity = 1;*/
+    });
+>>>>>>> Stashed changes
     _setUpd();
   }
 
   void _addToFavorites(int i) async {
     await ApiService().addToFavorites(1, i);
+<<<<<<< Updated upstream
     _setUpd();
   }
 
@@ -96,6 +116,67 @@ class _MyCartPageState extends State<MyCartPage> {
     _setUpd();
   }
 
+=======
+    //_fetchFavorites();
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isFavourite = !i.isFavourite;*/
+    });
+    _setUpd();
+  }
+
+  void _deleteFromFavourites(int i) async {
+    await ApiService().removeFromFavorites(1, i);
+    //_fetchFavorites();
+    setState(() {
+      /*
+      _productsUpd
+          .elementAt(_productsUpd.indexWhere((j) => j.id == i.id))
+          .isFavourite = !i.isFavourite;*/
+    });
+    _setUpd();
+  }
+
+  void plus(Cart item) async {
+    int newQuantity = item.quantity + 1;
+    if (newQuantity <= item.stock) {
+      await ApiService().removeFromCart(1, item.productid);
+      await ApiService().addToCart(1, item.productid, newQuantity);
+    }
+    /*
+    setState(() {
+      // Обновляем локальное состояние для отображения нового количества
+      _cartProductsUpd
+          .elementAt(_cartProductsUpd.indexWhere((i) => i.id == item.id))
+          .quantity = newQuantity;
+    });
+*/
+    _setUpd();
+  }
+
+  void minus(Cart item) async {
+    final count = item.quantity;
+
+    if (count > 1) {
+      int newQuantity = count - 1;
+      await ApiService().removeFromCart(1, item.productid);
+      await ApiService().addToCart(1, item.productid, newQuantity);
+
+      /*
+      setState(() {
+        // Обновляем локальное состояние для отображения нового количества
+        _cartProductsUpd
+            .elementAt(_cartProductsUpd.indexWhere((i) => i.id == item.id))
+            .quantity = newQuantity;
+      });*/
+    }
+
+    _setUpd();
+  }
+
+>>>>>>> Stashed changes
   Future<bool?> _showConfirmedDialog(BuildContext context, Cart flavor) {
     return showDialog<bool>(
         context: context,
@@ -121,6 +202,10 @@ class _MyCartPageState extends State<MyCartPage> {
                 const SizedBox(
                   height: 10,
                 ),
+<<<<<<< Updated upstream
+=======
+                //Text(flavor.name),
+>>>>>>> Stashed changes
               ],
             ),
             actionsAlignment: MainAxisAlignment.center,
@@ -158,9 +243,15 @@ class _MyCartPageState extends State<MyCartPage> {
             "Корзина",
             style: CartPageTheme.appBarTextStyle,
           ),
+<<<<<<< Updated upstream
           backgroundColor: CartPageTheme.appBarColor,
         ),
         backgroundColor: CartPageTheme.backgroundColor,
+=======
+          backgroundColor: const Color.fromRGBO(99, 247, 168, 1),
+        ),
+        backgroundColor: Colors.grey,
+>>>>>>> Stashed changes
         body: FutureBuilder<List<Cart>>(
             future: _cartProducts,
             builder: (context, snapshot) {
@@ -203,6 +294,15 @@ class _MyCartPageState extends State<MyCartPage> {
                             onDismissed: (direction) {
                               _setUpd();
                               _deleteFromCart(flavor.productid);
+<<<<<<< Updated upstream
+=======
+                              /*
+                              setState(() {
+                                _cartProductsUpd.removeAt(
+                                    _cartProductsUpd.indexWhere((i) =>
+                                        i.id == cartItems.elementAt(index).id));
+                              });*/
+>>>>>>> Stashed changes
                               _setUpd();
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -322,16 +422,35 @@ class _MyCartPageState extends State<MyCartPage> {
                           children: [
                             TextButton(
                               onPressed: () {},
+<<<<<<< Updated upstream
                               style: CartPageTheme.buttonStyle,
                               child: Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
+=======
+                              style: TextButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 203, 152, 0),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 12.0, horizontal: 40.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+>>>>>>> Stashed changes
                                 children: [
                                   Text(
                                     '${cartItems.fold(0.0, (sum, item) => sum + item.quantity * item.price)} ₽',
                                     style: const TextStyle(
                                       fontSize: 18.0,
+<<<<<<< Updated upstream
                                       color: Colors.white,
+=======
+                                      color: Color.fromARGB(255, 255, 255, 255),
+>>>>>>> Stashed changes
                                     ),
                                   ),
                                   const SizedBox(
@@ -341,7 +460,11 @@ class _MyCartPageState extends State<MyCartPage> {
                                     'оплатить',
                                     style: TextStyle(
                                       fontSize: 18.0,
+<<<<<<< Updated upstream
                                       color: Colors.white,
+=======
+                                      color: Color.fromARGB(255, 255, 255, 255),
+>>>>>>> Stashed changes
                                     ),
                                   ),
                                 ],

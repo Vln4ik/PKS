@@ -1,254 +1,263 @@
 import 'package:flutter/material.dart';
+import 'package:front/auth/auth_service.dart';
 import 'package:front/models/api_service.dart';
-import 'package:front/models/product_model.dart';
-<<<<<<< Updated upstream
-import 'package:front/styles/add_item_styles.dart';
+import 'package:front/models/user_model.dart';
 
-class AddFlavorScreen extends StatefulWidget {
-  const AddFlavorScreen({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
-=======
-
-class AddFlavorScreen extends StatefulWidget {
-  const AddFlavorScreen({super.key});
->>>>>>> Stashed changes
   @override
-  _AddFlavorScreenState createState() => _AddFlavorScreenState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _AddFlavorScreenState extends State<AddFlavorScreen> {
-  final TextEditingController _nameFlavorController = TextEditingController();
-  final TextEditingController _imageController = TextEditingController();
-  final TextEditingController _descController = TextEditingController();
-  final TextEditingController _dopController = TextEditingController();
-  final TextEditingController _priceController = TextEditingController();
-<<<<<<< Updated upstream
-=======
-  //int listLength = info.flavors.length;
->>>>>>> Stashed changes
+class _SignupPageState extends State<SignupPage> {
+  final authService = AuthService();
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  void signup() async {
+    final name = _nameController.text;
+    final email = _emailController.text;
+    final phone = _phoneController.text;
+    final password = _passwordController.text;
+    final confirmPassword = _confirmPasswordController.text;
+
+    if (password != confirmPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Пароли не совпадают'),
+        ),
+      );
+      return;
+    } else {
+      try {
+        await authService.signUpWithEmailPassword(email, password);
+        await ApiService().createUser(User(
+            id: 0,
+            image: '',
+            name: _nameController.text,
+            email: _emailController.text,
+            phoneNumber: _phoneController.text,
+            password: _passwordController.text));
+        Navigator.pop(context);
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('error: $e')));
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< Updated upstream
-      backgroundColor: AppTheme.backgroundColor,
-=======
-      backgroundColor: Colors.grey,
->>>>>>> Stashed changes
-      appBar: AppBar(
-        title: const Text(
-          "Добавить новый автомобиль",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 21.0,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
+        child: ListView(
           children: [
-<<<<<<< Updated upstream
-            const SizedBox(height: 50),
-            TextField(
-              controller: _nameFlavorController,
-              decoration: InputDecoration(
-                hintText: "Название модели",
-                hintStyle: const TextStyle(
-                  color: AppTheme.hintTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _imageController,
-              decoration: InputDecoration(
-                hintText: "Ссылка на картинку",
-                hintStyle: const TextStyle(
-                  color: AppTheme.hintTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _descController,
-              decoration: InputDecoration(
-                hintText: "Описание",
-                hintStyle: const TextStyle(
-                  color: AppTheme.hintTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _dopController,
-              decoration: InputDecoration(
-                hintText: "Дополнительная информация",
-                hintStyle: const TextStyle(
-                  color: AppTheme.hintTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _priceController,
-              decoration: InputDecoration(
-                hintText: "Цена",
-                hintStyle: const TextStyle(
-                  color: AppTheme.hintTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-=======
-            const SizedBox(
-              height: 50,
-            ),
-            TextField(
-              controller: _nameFlavorController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                  hintText: "Название автомобиля",
-                  hintStyle: const TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 13.0, horizontal: 13.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: _imageController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                  hintText: "Ссылка на картинку",
-                  hintStyle: const TextStyle(
-                    color: Color.fromRGBO(160, 149, 108, 1),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 13.0, horizontal: 13.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: _descController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                  hintText: "Описание",
-                  hintStyle: const TextStyle(
-                    color: Color.fromRGBO(160, 149, 108, 1),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 13.0, horizontal: 13.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: _dopController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                  hintText: "Дополнительная информация",
-                  hintStyle: const TextStyle(
-                    color: Color.fromRGBO(160, 149, 108, 1),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 13.0, horizontal: 13.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: _priceController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
-                  hintText: "Цена",
-                  hintStyle: const TextStyle(
-                    color: Color.fromRGBO(160, 149, 108, 1),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 13.0, horizontal: 13.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
-                  )),
-            ),
             const SizedBox(
               height: 40,
             ),
+            const Center(
+              child: Text(
+                'Регистрация',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 21.0,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 50, left: 10, right: 0, bottom: 5),
+              child: Text(
+                'Имя пользователя',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 77, 70, 0)),
+              ),
+            ),
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  hintText: 'Евлампий',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(160, 149, 108, 1),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 13.0, horizontal: 13.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                  )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, left: 10, right: 0, bottom: 5),
+              child: Text(
+                'Почта',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 77, 70, 0)),
+              ),
+            ),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  hintText: 'evlampiy@gmail.com',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(160, 149, 108, 1),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 13.0, horizontal: 13.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                  )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, left: 10, right: 0, bottom: 5),
+              child: Text(
+                'Телефон',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 77, 70, 0)),
+              ),
+            ),
+            TextField(
+              controller: _phoneController,
+              decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  hintText: '79166666666',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(160, 149, 108, 1),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 13.0, horizontal: 13.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                  )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, left: 10, right: 0, bottom: 5),
+              child: Text(
+                'Пароль',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 77, 70, 0)),
+              ),
+            ),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  //hintText: 'Пароль',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(160, 149, 108, 1),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 13.0, horizontal: 13.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                  )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 0, left: 10, right: 0, bottom: 5),
+              child: Text(
+                'Повторный пароль',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 77, 70, 0)),
+              ),
+            ),
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  hintText: 'Должен совпадать с предыдущим',
+                  hintStyle: const TextStyle(
+                    color: Color.fromRGBO(160, 149, 108, 1),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 13.0, horizontal: 13.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                        color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                  )),
+            ),
+            const SizedBox(
+              height: 60,
+            ),
             ElevatedButton(
+              onPressed: signup,
               style: ElevatedButton.styleFrom(
-                foregroundColor: const Color.fromRGBO(99, 247,  168, 1),
+                foregroundColor: const Color.fromRGBO(145, 132, 85, 1),
                 backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(
@@ -258,42 +267,15 @@ class _AddFlavorScreenState extends State<AddFlavorScreen> {
                     side: const BorderSide(
                         width: 2, color: Color.fromRGBO(145, 132, 85, 1))),
               ),
->>>>>>> Stashed changes
-              onPressed: () async {
-                double price = double.parse(_priceController.text);
-
-                if (_nameFlavorController.text.isNotEmpty &&
-                    _imageController.text.isNotEmpty &&
-                    _descController.text.isNotEmpty &&
-                    _dopController.text.isNotEmpty &&
-                    _priceController.text.isNotEmpty) {
-                  await ApiService().createProduct(Product(
-                    id: 100,
-                    imageUrl: _imageController.text,
-                    name: _nameFlavorController.text,
-                    description: _descController.text,
-                    feature: _dopController.text,
-                    price: price,
-                    stock: 0,
-                  ));
-                  Navigator.pop(context);
-<<<<<<< Updated upstream
-                  print("новый автомобиль создан");
-=======
-                  print("новый автомобиль добавлен");
->>>>>>> Stashed changes
-                } else {
-                  print("не все поля заполнены");
-                }
-              },
               child: const Text(
-                "Сохранить",
+                'Создать аккаунт',
                 style: TextStyle(
+                  //color: Colors.black,
                   fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

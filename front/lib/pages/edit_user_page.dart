@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:front/models/api_service.dart';
 import 'package:front/models/user_model.dart';
+<<<<<<< Updated upstream
 import 'package:front/styles/edit_user_styles.dart';
+=======
+>>>>>>> Stashed changes
 
 class MyEditUserInfoPage extends StatefulWidget {
   const MyEditUserInfoPage({super.key, required this.uinfo});
@@ -18,6 +21,7 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
 
+<<<<<<< Updated upstream
   @override
   void initState() {
     super.initState();
@@ -30,6 +34,18 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
   }
 
   @override
+=======
+  void initState() {
+    super.initState();
+    ApiService().getUserById(widget.uinfo.id).then((i) => {
+          _userNameController.text = i.name,
+          _profilePicController.text = i.image,
+          _emailController.text = i.email,
+          _phoneController.text = i.phoneNumber
+        });
+  }
+
+>>>>>>> Stashed changes
   void dispose() {
     _userNameController.dispose();
     _profilePicController.dispose();
@@ -41,7 +57,11 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< Updated upstream
       backgroundColor: AppTheme.backgroundColor,
+=======
+      backgroundColor: Colors.amber[50],
+>>>>>>> Stashed changes
       appBar: AppBar(
         title: const Text(
           "Изменение данных профиля",
@@ -63,15 +83,22 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                 child: Text(
                   'Имя пользователя',
                   style: TextStyle(
+<<<<<<< Updated upstream
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: AppTheme.labelColor,
                   ),
+=======
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 77, 70, 0)),
+>>>>>>> Stashed changes
                 ),
               ),
               TextField(
                 controller: _userNameController,
                 decoration: InputDecoration(
+<<<<<<< Updated upstream
                   hintText: 'Имя пользователя',
                 ),
               ),
@@ -85,11 +112,46 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                     fontWeight: FontWeight.w400,
                     color: AppTheme.labelColor,
                   ),
+=======
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    hintText: 'Имя пользователя',
+                    hintStyle: const TextStyle(
+                      color: Color.fromRGBO(160, 149, 108, 1),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 13.0, horizontal: 13.0),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                    )),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 5),
+                child: Text(
+                  'Фото профиля',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 77, 70, 0)),
+>>>>>>> Stashed changes
                 ),
               ),
               TextField(
                 controller: _profilePicController,
                 decoration: InputDecoration(
+<<<<<<< Updated upstream
                   hintText: 'ссылка на фото профиля',
                 ),
               ),
@@ -103,11 +165,46 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                     fontWeight: FontWeight.w400,
                     color: AppTheme.labelColor,
                   ),
+=======
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    hintText: 'ссылка на фото профиля',
+                    hintStyle: const TextStyle(
+                      color: Color.fromRGBO(160, 149, 108, 1),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 13.0, horizontal: 13.0),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                    )),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 5),
+                child: Text(
+                  'Почта',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 77, 70, 0)),
+>>>>>>> Stashed changes
                 ),
               ),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
+<<<<<<< Updated upstream
                   hintText: 'почта',
                 ),
               ),
@@ -121,23 +218,97 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                     fontWeight: FontWeight.w400,
                     color: AppTheme.labelColor,
                   ),
+=======
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    hintText: 'почта',
+                    hintStyle: const TextStyle(
+                      color: Color.fromRGBO(160, 149, 108, 1),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 13.0, horizontal: 13.0),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                    )),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding:
+                    EdgeInsets.only(top: 10, left: 10, right: 0, bottom: 5),
+                child: Text(
+                  'Телефон',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 77, 70, 0)),
+>>>>>>> Stashed changes
                 ),
               ),
               TextField(
                 controller: _phoneController,
                 decoration: InputDecoration(
+<<<<<<< Updated upstream
                   hintText: 'телефон',
                 ),
               ),
               const SizedBox(height: 60),
               Center(
                 child: ElevatedButton(
+=======
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    hintText: 'телефон',
+                    hintStyle: const TextStyle(
+                      color: Color.fromRGBO(160, 149, 108, 1),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 13.0, horizontal: 13.0),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromRGBO(108, 98, 63, 1), width: 1),
+                    )),
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: const Color.fromRGBO(145, 132, 85, 1),
+                    backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+                    elevation: 0,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 35.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(
+                            width: 2, color: Color.fromRGBO(145, 132, 85, 1))),
+                  ),
+>>>>>>> Stashed changes
                   onPressed: () async {
                     if (_userNameController.text.isNotEmpty &&
                         _profilePicController.text.isNotEmpty &&
                         _emailController.text.isNotEmpty &&
                         _phoneController.text.isNotEmpty) {
                       await ApiService().updateUser(User(
+<<<<<<< Updated upstream
                         id: widget.uinfo.id,
                         image: _profilePicController.text,
                         name: _userNameController.text,
@@ -145,6 +316,14 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                         phoneNumber: _phoneController.text,
                         password: widget.uinfo.password,
                       ));
+=======
+                          id: widget.uinfo.id,
+                          image: _profilePicController.text,
+                          name: _userNameController.text,
+                          email: _emailController.text,
+                          phoneNumber: _phoneController.text,
+                          password: widget.uinfo.password));
+>>>>>>> Stashed changes
                       Navigator.pop(context);
                       print("Информация профиля обновлена");
                     } else {
@@ -159,7 +338,11 @@ class _MyEditUserInfoPageState extends State<MyEditUserInfoPage> {
                     ),
                   ),
                 ),
+<<<<<<< Updated upstream
               ),
+=======
+              )
+>>>>>>> Stashed changes
             ],
           ),
         ),
